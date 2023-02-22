@@ -15,13 +15,13 @@ The data packet contains the following:
 
 1. Load the data into a Postgres database:
 
-```
+```bash
 bash> cat recipe-tracker.sql | psql recipe_tracker
 ```
 
 2. Run the following query against your database:
 
-```
+```sql
 SELECT
         recipe_1.id,
         recipe_1.name,
@@ -32,11 +32,11 @@ FROM (SELECT * FROM recipes WHERE name = 'Dish, turkey, curry') recipe_1,
 WHERE recipe_1.id != recipe_2.id
 ORDER BY recipe_1.embedding <=> recipe_2.embedding
 LIMIT 10;
-``
+```
 
 You’ll get the recommendations for the following similar meals:
 
-```ruby
+```
  id  |        name         | id  |                  name
 -----+---------------------+-----+----------------------------------------
  272 | Dish, turkey, curry | 271 | Dish, turkey & noodles, baked
@@ -62,7 +62,7 @@ You’ll get the recommendations for the following similar meals:
 7. Pull down the OpenAI embeddings for your recipes by running `ruby classfier.rb` (will take ~ 5 minutes due to rate limiting)
 8. Query the database to find similar recipes:
 
-```
+```sql
 SELECT
         recipe_1.id,
         recipe_1.name,
