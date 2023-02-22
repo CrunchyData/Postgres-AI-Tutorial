@@ -1,9 +1,7 @@
 require 'sequel'
 
-# connectionString = ENV['DATABASE_URL']
-connectionString = 'postgres://localhost:5432/recipe_tracker'
-
-DB = Sequel.postgres('recipe_tracker')
+connection_string = ENV['DATABASE_URL']
+DB = Sequel.connect(connection_string)
 
 DB.create_table? :recipes do
   primary_key :id

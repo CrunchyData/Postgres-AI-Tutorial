@@ -1,0 +1,29 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    dotenv (2.7.6)
+    httparty (0.21.0)
+      mini_mime (>= 1.0.0)
+      multi_xml (>= 0.5.2)
+    mini_mime (1.1.2)
+    multi_xml (0.6.0)
+    nokogiri (1.14.2-arm64-darwin)
+      racc (~> 1.4)
+    pg (1.4.5)
+    racc (1.6.2)
+    ruby-openai (3.3.0)
+      httparty (>= 0.18.1)
+    sequel (5.65.0)
+
+PLATFORMS
+  arm64-darwin-21
+
+DEPENDENCIES
+  dotenv
+  nokogiri
+  pg
+  ruby-openai
+  sequel
+
+BUNDLED WITH
+   2.3.8

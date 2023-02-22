@@ -1,5 +1,8 @@
+require 'bundler'
+Bundler.require
+Dotenv.load
+
 require './db'
-require 'nokogiri'
 
 #recipes_xml = Nokogiri::XML(File.read('ArmedForcesRecipes-truncated.xml'))
 recipes_xml = Nokogiri::XML(File.read('ArmedForcesRecipes.xml'))

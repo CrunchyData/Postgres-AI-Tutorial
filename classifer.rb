@@ -1,7 +1,10 @@
-require './db'
-require 'openai'
+require 'bundler'
+Bundler.require
+Dotenv.load
 
-openai = OpenAI::Client.new(access_token: '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')
+require './db'
+
+openai = OpenAI::Client.new(access_token: ENV['OPENAI_API_KEY'])
 
 while recipe = DB[:recipes].where(embedding: nil).exclude(description: nil).first do
   submitted_value = recipe[:description].gsub(/\n/, ' ')
