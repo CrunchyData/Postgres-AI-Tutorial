@@ -32,7 +32,7 @@ vector_index = [v['index'] for v in vector_summation[-50:]]
 super_compressed = [v['index'] for v in vector_summation[-10:]]
 
 # Update recipes with compacted_embedding and super_compacted_embedding
-cursor.execute("SELECT id, embedding FROM recipes WHERE python_compacted_embedding IS NULL AND embedding IS NOT NULL")
+cursor.execute("SELECT id, embedding FROM recipes WHERE compacted_embedding IS NULL AND embedding IS NOT NULL")
 
 # Open an update cursor so we can update while keeping the select cursor open
 update_cursor = conn.cursor()
@@ -45,7 +45,7 @@ for row in cursor:
     super_compressed_vector = [vectors[index] for index in super_compressed]
 
     # Update the database with the compacted and super compressed embeddings
-    update_cursor.execute("UPDATE recipes SET python_compacted_embedding = %s, super_compacted_embedding = %s WHERE id = %s", (str(compacted_vector), str(super_compressed_vector), recipe_id))
+    update_cursor.execute("UPDATE recipes SET compacted_embedding = %s, super_compacted_embedding = %s WHERE id = %s", (str(compacted_vector), str(super_compressed_vector), recipe_id))
 
 # Close the database connection
 conn.commit()
